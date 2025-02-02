@@ -6,8 +6,8 @@ export default async function Home() {
   const client = edgedb.createClient({
     // Note: these options aren't needed for your project deployed on Vercel,
     // they will be automatically found from environment variables
-    instanceName: process.env.DB_INSTANCE,
-    secretKey: process.env.DB_KEY
+    instanceName: process.env.EDGEDB_INSTANCE,
+    secretKey: process.env.EDGEDB_SECRET_KEY
   });
 
   const t = await e
