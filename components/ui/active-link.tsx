@@ -1,8 +1,8 @@
-"use client";
-import { usePathname, useRouter } from "next/navigation";
-import { CSSProperties, MouseEventHandler } from "react";
-import { Button } from "./button";
-import clsx from "clsx";
+'use client';
+import { usePathname, useRouter } from 'next/navigation';
+import { MouseEventHandler } from 'react';
+import { Button } from './button';
+import clsx from 'clsx';
 
 export const ActiveLink: React.FC<{
   href: string;
@@ -23,10 +23,10 @@ export const ActiveLink: React.FC<{
       onClick={handleClick}
       type="button"
       className={clsx(
-        "text-primary-foreground rounded-sm ",
+        'text-primary-foreground rounded-sm ',
         path.includes(href)
-          ? "bg-gradient-to-r from-card to-fuchsia-800 justify-start flex-row-reverse"
-          : "text-start hover:bg-gradient-to-l hover:from-card hover:to-fuchsia-600 hover:opacity-70 justify-start"
+          ? 'bg-gradient-to-r from-card to-fuchsia-800 justify-start flex-row-reverse'
+          : 'text-start hover:bg-gradient-to-l hover:from-card hover:to-fuchsia-600 hover:opacity-70 justify-start'
       )}
     >
       {children}
