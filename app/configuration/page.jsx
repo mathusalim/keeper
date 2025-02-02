@@ -1,15 +1,19 @@
-"use server";
-import * as edgedb from "edgedb";
-
-const client = edgedb.createClient({
-  // Note: these options aren't needed for your project deployed on Vercel,
-  // they will be automatically found from environment variables
-  instanceName: "vercel-VK4D729MtAUOmXoL0RQSFdQq/keeper-db",
-  secretKey:
-    "nbwt1_eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlZGIuZC5hbGwiOnRydWUsImVkYi5pIjpbInZlcmNlbC1WSzRENzI5TXRBVU9tWG9MMFJRU0ZkUXEva2VlcGVyLWRiIl0sImVkYi5yLmFsbCI6dHJ1ZSwiaWF0IjoxNzM4NDkxMTU3LCJpc3MiOiJhd3MuZWRnZWRiLmNsb3VkIiwianRpIjoiT2h2aHJPRk9FZS1rNnc4ZTBIMWhHUSIsInN1YiI6Ik9jcVYxdUZPRWUtLWpMOFZya1AtZEEifQ.Ot2vo7Zz-lGXfln5QdxuYkZAHU6GMZXYrtIZzZ9DrspB-XDvH6Fm6kCYhE3TZKW1J8Wup9QQej7sUBj0OZqVuw",
-});
+'use server';
+import * as edgedb from 'edgedb';
+import e from '../../dbschema/edgeql-js';
 
 export default async function Home() {
-  const result = await client.query("select 1 + 2");
-  return <p>{result}</p>;
+  const client = edgedb.createClient({
+    // Note: these options aren't needed for your project deployed on Vercel,
+    // they will be automatically found from environment variables
+    instanceName: process.env.DB_INSTANCE,
+    secretKey: process.env.DB_KEY
+  });
+
+  const t = await e
+    .select(e.User, () => ({
+      name: true
+    }))
+    .run(client);
+  return <p>{t[0].name}</p>;
 }
