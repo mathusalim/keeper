@@ -6,7 +6,12 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "edge-login": "edgedb cloud login",
+    "edge-create-migration": "edgedb migration create",
+    "edge-migrate": "edgedb migrate -I mathusalim/keeper",
+    "edge-interfaces": "npx @edgedb/generate interfaces",
+    "edge-query-generator": "npx @edgedb/generate edgeql-js"
   },
   "dependencies": {
     "@radix-ui/react-label": "^2.1.1",
